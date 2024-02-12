@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+  pubsubrabbitmq.customers:
+    image: ${DOCKER_REGISTRY-}pubsubrabbitmq
+    build:
+      context: .
+      dockerfile: PubSubRabbitmq.Customers/Dockerfile
+
+  pubsubrabbitmq.notifications:
+    image: ${DOCKER_REGISTRY-}pubsubrabbitmq
+    build:
+      context: .
+      dockerfile: PubSubRabbitmq.Notifications/Dockerfile
+
+
+  pubsubrabbitmq.sales:
+    image: ${DOCKER_REGISTRY-}pubsubrabbitmq
+    build:
+      context: .
+      dockerfile: PubSubRabbitmq.Sales/Dockerfile
+
+  rabbitmq:
+    image: rabbitmq:3.8-management
+    container_name: rabbitmq
+    hostname: "rabbitmq"
+    labels:
+      NAME: "rabbitmq"
+    volumes:
+      - ./PubSubRabbitmq.Database/definitions.json:/etc/rabbitmq/definitions.json
+      - ./PubSubRabbitmq.Database/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+    ports:
+      - "4369:4369"
+      - "5671:5671"
+      - "5672:5672"
+      - "25672:25672"
+      - "15671:15671"
+      - "15672:15672"
