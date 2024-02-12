@@ -37,7 +37,4 @@ This project is licensed under the [MIT License](LICENSE).
 ## Disclaimer
 This project is intended for educational and demonstration purposes only. It may not be suitable for production environments without further development and testing. Use it at your own risk.
 
-## Contact
-For any inquiries or support regarding this project, feel free to contact the project maintainer [insert your email or contact information here].
-
 Happy coding! 🚀
